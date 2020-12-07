@@ -1,0 +1,33 @@
+.defaultForm {
+    padding: 20px;
+    background: #fff;
+}
+    .defaultForm .inputFieldGroup label {
+        font-size: 16px;
+        color: darkblue;
+        margin-bottom: 10px;
+        display: inline-block;
+    }
+    .defaultForm .inputFieldGroup div {
+        color: darkblue;
+        font-size: 16px;
+        margin-bottom: 10px;
+    }
+.defaultForm .inputFieldGroup div input{
+    margin-bottom: 10px;
+}
+.defaultForm .inputFieldGroup div textarea{
+    width: 98%;
+}
+.defaultForm .inputFieldGroup select {
+    width: 98%;
+    margin-bottom: 10px;
+}
+.defaultForm .submit{
+    background: blue;
+    width: 180px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+

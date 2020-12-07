@@ -1,8 +1,7 @@
 import * as React from "react";
-
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-
+import "./Form.css";
 /**
  * Type checking for Component State
  */
@@ -202,7 +201,7 @@ export default class FormComponent extends React.Component<CompProps, CompState>
                 >
                     {(formikProps) => {
                         return (
-                            <Form>{ formFields }
+                            <Form className="defaultForm">{ formFields }
                                 <div className="inputFieldGroup">
                                     <button className="submit" type="submit">
                                         Submit
