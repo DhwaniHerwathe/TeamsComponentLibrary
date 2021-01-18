@@ -11,24 +11,37 @@
     .defaultForm .inputFieldGroup div {
         color: darkblue;
         font-size: 16px;
-        margin-bottom: 10px;
+        margin-bottom: 5px;
     }
 .defaultForm .inputFieldGroup div input{
     margin-bottom: 10px;
+    width: 97%;
+    padding: 5px;
 }
 .defaultForm .inputFieldGroup div textarea{
     width: 98%;
+    height: 80px;
 }
 .defaultForm .inputFieldGroup select {
-    width: 98%;
+    width: 100%;
     margin-bottom: 10px;
+    padding: 5px 0;
 }
-.defaultForm .submit{
+
+.defaultForm input[type="radio" i] {
+    margin: 3px 5px;
+}
+.defaultForm .submit {
     background: blue;
     width: 180px;
     color: white;
     border: none;
     border-radius: 5px;
-
+    padding: 5px;
+    margin: 0 auto;
+    display: block;
 }
+    .defaultForm .errorMessage{
+        color: red !important;
+    }
 
