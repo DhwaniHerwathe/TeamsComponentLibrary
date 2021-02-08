@@ -6,7 +6,7 @@ import FormComponent from './Form';
 
 
 export default {
-    title: 'Components/FormComponent',
+    title: 'Components/Form with Formik and Yup',
     component: FormComponent,
     argTypes: {
         formFields: [
@@ -143,9 +143,9 @@ export default {
 
 const Template: Story = (args) => <FormComponent {...args}/>;
 
-export const FormComponentDefault = Template.bind({});
+export const Default = Template.bind({});
 
-FormComponentDefault.args = {
+Default.args = {
     formFields: [
         {
           field: "input",

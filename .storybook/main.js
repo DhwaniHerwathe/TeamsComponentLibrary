@@ -6,6 +6,11 @@ module.exports = {
   "addons": [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
-    "@storybook/preset-create-react-app"
-  ]
+    "@storybook/preset-create-react-app",
+    "@storybook/addon-docs"
+  ],
+  typescript: {
+    // also valid 'react-docgen-typescript' | false
+    reactDocgen: 'react-docgen',
+  },
 }

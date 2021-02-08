@@ -4,12 +4,12 @@ export default create({
   base: 'light',
 
   colorPrimary: '#6264A7',
-  colorSecondary: '#484644',
+  colorSecondary: 'rgb(97,97,97)',
 
   // UI
-  appBg: '#F3F2F1',
-  appContentBg: 'silver',
-  appBorderColor: '#F3F2F1',
+  appBg: '#F5F5F5',
+  appContentBg: 'white',
+  appBorderColor: '#EBEBEB',
   appBorderRadius: 4,
 
   // Typography
@@ -17,13 +17,13 @@ export default create({
   fontCode: 'monospace',
 
   // Text colors
-  textColor: '#252423',
+  textColor: 'rgba(36,36,36,0.5)',
   textInverseColor: 'rgba(255,255,255,0.9)',
 
   // Toolbar default and active colors
-  barTextColor: '#252423',
-  barSelectedColor: 'black',
-  barBg: '#6264A7',
+  barTextColor: 'rgb(97,97,97)',
+  barSelectedColor: '#6264A7',
+  barBg: 'white',
 
   // Form colors
   inputBg: 'white',
@@ -32,6 +32,6 @@ export default create({
   inputBorderRadius: 4,
 
   brandTitle: 'XD React Component Factory',
-  brandUrl: 'https://example.com',
-  brandImage: 'https://placehold.it/350x150',
+  brandUrl: '/',
+  brandImage: '',
 });

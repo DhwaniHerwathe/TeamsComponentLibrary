@@ -191,7 +191,6 @@ export default class FormComponent extends React.Component<CompProps, CompState>
             </div>)
             }
         })
-        console.log(this.initialValues);
         return (
             <React.Fragment>
                 <Formik

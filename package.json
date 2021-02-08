@@ -15,6 +15,7 @@
     "@types/react-dom": "^16.9.9",
     "adaptivecards": "^2.4.0",
     "formik": "^2.2.5",
+    "markdown-it": "^12.0.4",
     "msteams-react-base-component": "^2.1.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -51,13 +52,14 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",
-    "@storybook/addon-actions": "^6.0.28",
-    "@storybook/addon-essentials": "^6.0.28",
-    "@storybook/addon-links": "^6.0.28",
-    "@storybook/node-logger": "^6.0.28",
+    "@storybook/addon-actions": "^6.1.11",
+    "@storybook/addon-essentials": "^6.1.11",
+    "@storybook/addon-links": "^6.1.11",
+    "@storybook/node-logger": "^6.1.11",
     "@storybook/preset-create-react-app": "^3.1.5",
-    "@storybook/react": "^6.0.28",
+    "@storybook/react": "^6.1.11",
     "babel-loader": "^8.2.1",
-    "react-is": "^17.0.1"
+    "react-is": "^17.0.1",
+    "story-description-loader": "^1.0.0"
   }
 }
