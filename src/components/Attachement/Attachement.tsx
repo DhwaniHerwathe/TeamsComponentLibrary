@@ -1,10 +1,5 @@
 import * as React from "react";
-import {
-  Flex,
-  Attachment,
-  Provider,
-  teamsTheme,
-} from "@fluentui/react-northstar";
+import { Attachment, Provider, teamsTheme } from "@fluentui/react-northstar";
 import { DownloadIcon, WordColorIcon } from "@fluentui/react-icons-northstar";
 
 export interface IAttachementProps {
