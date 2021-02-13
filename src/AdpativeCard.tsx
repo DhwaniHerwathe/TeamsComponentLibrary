@@ -4,7 +4,7 @@ import { useContext, useState } from "react";
 import MarkdownIt from "markdown-it";
 import { CardConfig }  from "./AdaptiveCardConfig";
 import { Card, Flex, Button, ChevronStartIcon, ChevronEndIcon, ThumbtackSlashIcon, ThumbtackIcon, Loader, Text , Provider, ThemeInput, teamsDarkTheme, teamsHighContrastTheme, teamsTheme} from "@fluentui/react-northstar";
-import "./AdaptiveCard.css";
+
 
 export interface IAdaptiveCardProps {
     card: any;
@@ -100,7 +100,7 @@ export const AdaptiveCard = (props: IAdaptiveCardProps) => {
 
     // render
     return (
-        <Provider className="adaptiveCardDiv">
+        <Provider>
         <Card size="medium" className="nudge-style">
         <Card.Header fitted styles={{ padding: "0 5px 0 10px" }}>
           Adaptive Card

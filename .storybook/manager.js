@@ -2,7 +2,7 @@
 
 import { addons } from '@storybook/addons';
 import { themes } from '@storybook/theming';
-//import customTheme from './customTheme';
+import customTheme from './customTheme';
 
 addons.setConfig({
   isFullscreen: false,
