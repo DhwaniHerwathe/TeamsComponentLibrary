@@ -5,7 +5,7 @@ import { Story, Meta } from "@storybook/react/types-6-0";
 import { Attachement, IAttachementProps } from "./Attachement";
 
 export default {
-  title: "Components/DownloadFile",
+  title: "Components/Attachement",
   component: Attachement,
   argTypes: {
     imageUrl: {
