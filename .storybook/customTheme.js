@@ -21,8 +21,8 @@ export default create({
   textInverseColor: 'rgba(255,255,255,0.9)',
 
   // Toolbar default and active colors
-  barTextColor: 'rgb(97,97,97)',
-  barSelectedColor: '#6264A7 !important',
+  barTextColor: '#6264A7',
+  barSelectedColor: '#6264A7',
   barBg: 'white',
 
   // Form colors
