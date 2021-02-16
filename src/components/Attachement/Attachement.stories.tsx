@@ -8,10 +8,32 @@ export default {
   title: "Components/Attachement",
   component: Attachement,
   argTypes: {
-    imageUrl: {
-      base64Data: "string",
-      contentType: "string",
-      fileName: "string",
+    base64Data: {
+      name: "base64Data",
+      type: { name: "string", required: true },
+      defaultValue: "A word binary file",
+      description: "Its contain the word binary file",
+      table: {
+        defaultValue: { summary: "Word binary file" },
+      },
+    },
+    contentType: {
+      name: "contentType",
+      type: { name: "string", required: true },
+      defaultValue: "Content type of the file",
+      description: "Holding the file type information",
+      table: {
+        defaultValue: { summary: "Content type of the file" },
+      },
+    },
+    fileName: {
+      name: "contentType",
+      type: { name: "string", required: true },
+      defaultValue: "File name",
+      description: "Holding the file name needs to be displayed",
+      table: {
+        defaultValue: { summary: "File name" },
+      },
     },
   },
 } as Meta;

@@ -7,6 +7,10 @@ export interface IAttachementProps {
   contentType?: string;
   fileName?: string;
 }
+/**
+ *
+ * An Attachment represents a file or media attachment, which may contain some metadata or actions.
+ */
 
 export const Attachement: React.FC<IAttachementProps> = ({
   base64Data,

@@ -9,9 +9,14 @@ export default {
   component: StepperForm,
   argTypes: {
     form: {
-      firstName: "",
-      lastName: "",
-      Address: "",
+      name: "headerName",
+      type: { name: "object", required: true },
+      defaultValue: "A form Object",
+      description:
+        "Its holding the form object which has firstName, lastName, Address",
+      table: {
+        defaultValue: { summary: "A form Object" },
+      },
     },
   },
 } as Meta;

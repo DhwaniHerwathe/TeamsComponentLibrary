@@ -10,6 +10,10 @@ export interface IDialogScreenProps {
   buttonName?: string;
   headerName?: string;
 }
+/**
+ *
+ * A Dialog displays important information on top of a page which requires a user's attention, confirmation, or interaction. Dialogs are purposefully interruptive, so they should be used sparingly.
+ */
 
 export const DialogScreen: React.FC<IDialogScreenProps> = ({
   buttonName,

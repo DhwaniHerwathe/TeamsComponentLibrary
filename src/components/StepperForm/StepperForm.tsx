@@ -12,6 +12,9 @@ import {
 } from "@fluentui/react-northstar";
 import "./StepperForm.css";
 
+/**
+ * Stepper is a component that displays content as a process with defined by user milestones. This is a great solution for a variety of registration forms, where you don't want to scare the user with lots of fields and questions.
+ */
 export const StepperForm: React.FC = () => {
   const [form, setForm] = React.useState<any | undefined>({
     firstName: "",
