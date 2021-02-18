@@ -19,7 +19,7 @@ import "./Card.css";
  * Footer: A card can contain a footer slot
  * */
 
-export const LeaveApprovalCard: React.FC = () => {
+export const TaskCard: React.FC = () => {
   return (
     <Provider theme={teamsTheme}>
       <>
