@@ -1,13 +1,13 @@
-import { create } from '@storybook/theming/create';
+import { create } from '@storybook/theming';
 
 export default create({
-  base: 'light',
+  base: 'dark',
 
   colorPrimary: '#6264A7',
   colorSecondary: 'rgb(97,97,97)',
 
   // UI
-  appBg: '#F5F5F5',
+  appBg: 'rgb(236,236,236)',
   appContentBg: 'white',
   appBorderColor: '#EBEBEB',
   appBorderRadius: 4,
@@ -31,7 +31,7 @@ export default create({
   inputTextColor: 'black',
   inputBorderRadius: 4,
 
-  brandTitle: 'XD React Component Factory',
+  brandTitle: 'XD Teams Component Factory',
   brandUrl: '/',
-  brandImage: '',
+  brandImage: 'logo.jpg',
 });

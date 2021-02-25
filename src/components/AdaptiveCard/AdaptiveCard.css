@@ -9,3 +9,19 @@
     color: #1ea7fd !important;
 }
 
+.nudge-style {
+    min-height: 200px;
+    max-width: 235px !important;
+    min-width: 70% !important;
+    box-shadow: 0 0.125rem 0.5rem #0000001A !important;
+}
+    .nudge-style   .ui-card__header{
+        padding: 0 0.75rem !important;
+    }
+    .nudge-style .ac-adaptiveCard{
+        padding: 0 0.625rem !important;
+    }
+    .nudge-style .ac-pushButton{
+        line-height: 1.4286 !important;
+    }
+

@@ -5,7 +5,7 @@ import { Story, Meta } from "@storybook/react/types-6-0";
 import { Attachement, IAttachementProps } from "./Attachement";
 
 export default {
-  title: "Components/Attachement",
+  title: "Components/DownloadFile",
   component: Attachement,
   argTypes: {
     base64Data: {

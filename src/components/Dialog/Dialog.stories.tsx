@@ -5,7 +5,7 @@ import { Story, Meta } from "@storybook/react/types-6-0";
 import { DialogScreen, IDialogScreenProps } from "./Dialog";
 
 export default {
-  title: "Components/DialogScreen",
+  title: "Components/Dialog",
   component: DialogScreen,
   argTypes: {
     buttonName: {

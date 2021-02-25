@@ -6,7 +6,7 @@ import { LeaveApprovalCard } from "./CardType2";
 import { TaskCard } from "./CardType3";
 
 export default {
-    title: "Components/CardTypes",
+    title: "Components/Cards",
     component: LeaveBalanceCard,
     argTypes: {
         primary: {
@@ -23,8 +23,8 @@ const Template2: Story = (args) => <LeaveApprovalCard {...args} />;
 const Template3: Story = (args) => <TaskCard {...args} />;
 
 export const Default = Template.bind({});
-export const CardType2 = Template2.bind({});
-export const CardType3 = Template3.bind({});
+export const ApprovalLayout= Template2.bind({});
+export const TaskLayout = Template3.bind({});
 
 Default.args = {
   

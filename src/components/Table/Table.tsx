@@ -15,7 +15,7 @@ type CompProps = {
  
     tableData?: TableValues;
     attributes?: object;
-    theme : string;
+    theme : object;
 }
 
 /**

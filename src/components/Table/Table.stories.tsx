@@ -6,7 +6,7 @@ import TableComponent from './Table';
 
 
 export default {
-    title: 'Components/TableComponent',
+    title: 'Components/Table',
     component: TableComponent,
     argTypes: {
       theme: {

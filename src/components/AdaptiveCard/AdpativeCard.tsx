@@ -102,9 +102,6 @@ export const AdaptiveCard = (props: IAdaptiveCardProps) => {
     return (
         <Provider className="adaptiveCardDiv">
         <Card size="medium" className="nudge-style">
-        <Card.Header fitted styles={{ padding: "0 5px 0 10px" }}>
-          Adaptive Card
-        </Card.Header>
         <Card.Body fitted>
             <div 
             ref={cardElement}>
