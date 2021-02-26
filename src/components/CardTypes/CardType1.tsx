@@ -9,6 +9,7 @@ import {
   Button,
 } from "@fluentui/react-northstar";
 import imageFile from "../../assets/island.svg";
+
 import "./Card.css";
 /**
  * A Card is used to display data in sematically grouped way.
@@ -22,30 +23,35 @@ export const LeaveBalanceCard: React.FC = () => {
     <Provider theme={teamsTheme}>
       <>
         <Flex className="cardWrapper">
-                  <Card className="MyLeaveDetailsCard" aria-roledescription="card with image and text">
-                      <Card.Body fitted>
-                          <Flex className="cardBody" space="between">
-                              <Flex className="leaveTypeValue" column>
-                                  <Image
-                                      src={imageFile}
-                                      alt="Sick Leave"
-                                  />
-                                  <Flex>
-                                      <Text className="typeOfLeave" color="#484644" size="medium" content="Vacation" />
-                                  </Flex>
-                              </Flex>
-                              <Flex className="leaveDaysValue">
-                                  <Text className="leaveNumbers" content="13" />
-                                  <Text className="daysText" content=" Days" />
-                              </Flex>
-                          </Flex>
-                      </Card.Body>
-                      <Card.Footer fitted>
-                          <Flex className="cardFooter">
-                              <Button className="editButton" content="Request Leave"/>
-                          </Flex>
-                      </Card.Footer>
-                  </Card>
+          <Card
+            className="MyLeaveDetailsCard"
+            aria-roledescription="card with image and text"
+          >
+            <Card.Body fitted>
+              <Flex className="cardBody" space="between">
+                <Flex className="leaveTypeValue" column>
+                  <Image src={imageFile} alt="Sick Leave" />
+                  <Flex>
+                    <Text
+                      className="typeOfLeave"
+                      color="#484644"
+                      size="medium"
+                      content="Vacation"
+                    />
+                  </Flex>
+                </Flex>
+                <Flex className="leaveDaysValue">
+                  <Text className="leaveNumbers" content="13" />
+                  <Text className="daysText" content=" Days" />
+                </Flex>
+              </Flex>
+            </Card.Body>
+            <Card.Footer fitted>
+              <Flex className="cardFooter">
+                <Button className="editButton" content="Request Leave" />
+              </Flex>
+            </Card.Footer>
+          </Card>
         </Flex>
       </>
     </Provider>
