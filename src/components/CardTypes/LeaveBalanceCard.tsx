@@ -17,43 +17,50 @@ import "./Card.css";
  * Body: A card can contain a body slot.
  * Footer: A card can contain a footer slot
  * */
-
-export const LeaveBalanceCard: React.FC = () => {
-  return (
-    <Provider theme={teamsTheme}>
-      <>
-        <Flex className="cardWrapper">
-          <Card
-            className="MyLeaveDetailsCard"
-            aria-roledescription="card with image and text"
-          >
-            <Card.Body fitted>
-              <Flex className="cardBody" space="between">
-                <Flex className="leaveTypeValue" column>
-                  <Image src={imageFile} alt="Sick Leave" />
-                  <Flex>
-                    <Text
-                      className="typeOfLeave"
-                      color="#484644"
-                      size="medium"
-                      content="Vacation"
-                    />
-                  </Flex>
+export interface ILeaveBalanceCardProps {
+    days?: string;
+    LeaveType?: string;
+}
+export const LeaveBalanceCard: React.FC<ILeaveBalanceCardProps> = ({
+    days,
+    LeaveType,
+    ...props
+}) => {
+    return (
+        <Provider theme={teamsTheme}>
+            <>
+                <Flex className="cardWrapper">
+                    <Card
+                        className="MyLeaveDetailsCard"
+                        aria-roledescription="card with image and text"
+                    >
+                        <Card.Body fitted>
+                            <Flex className="cardBody" space="between">
+                                <Flex className="leaveTypeValue" column>
+                                    <Image src={imageFile} alt="Sick Leave" />
+                                    <Flex>
+                                        <Text
+                                            className="typeOfLeave"
+                                            color="#484644"
+                                            size="medium"
+                                            content={LeaveType}
+                                        />
+                                    </Flex>
+                                </Flex>
+                                <Flex className="leaveDaysValue">
+                                    <Text className="leaveNumbers" content={days} />
+                                    <Text className="daysText" content=" Days" />
+                                </Flex>
+                            </Flex>
+                        </Card.Body>
+                        <Card.Footer fitted>
+                            <Flex className="cardFooter">
+                                <Button className="editButton" content="Request Leave" />
+                            </Flex>
+                        </Card.Footer>
+                    </Card>
                 </Flex>
-                <Flex className="leaveDaysValue">
-                  <Text className="leaveNumbers" content="13" />
-                  <Text className="daysText" content=" Days" />
-                </Flex>
-              </Flex>
-            </Card.Body>
-            <Card.Footer fitted>
-              <Flex className="cardFooter">
-                <Button className="editButton" content="Request Leave" />
-              </Flex>
-            </Card.Footer>
-          </Card>
-        </Flex>
-      </>
-    </Provider>
-  );
-};
+            </>
+        </Provider>
+    );
+}
