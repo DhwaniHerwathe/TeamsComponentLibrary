@@ -49,7 +49,7 @@ export default class TableComponent extends React.Component<
     });
 
     // update theme based on props
-    const updateTheme = (themeStr?: string): ThemeInput<any> => {
+    const updateTheme = (themeStr?: any): ThemeInput<any> => {
       let theme: ThemeInput<any>;
       switch (themeStr) {
         case "dark":
