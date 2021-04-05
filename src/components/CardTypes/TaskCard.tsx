@@ -19,7 +19,22 @@ import "./Card.css";
  * Footer: A card can contain a footer slot
  * */
 
-export const TaskCard: React.FC = () => {
+export interface ItaskCardProps {
+    LearningCourseDetails?: string,
+    CourseDescription?: string,
+    courseDuration?: string,
+    courseMode?: string,
+    courseDate?: string,
+}
+
+export const TaskCard: React.FC<ItaskCardProps> = ({
+    LearningCourseDetails,
+    CourseDescription,
+    courseDuration,
+    courseMode,
+    courseDate,
+    ...props
+}) => {
   return (
     <Provider theme={teamsTheme}>
       <>
@@ -41,21 +56,11 @@ export const TaskCard: React.FC = () => {
               <Flex className="cardBody" space="between">
                 <Flex className="" column>
                   <Flex className="learningCourseDetails">
-                    <Text content="HVED and High Velocity Solutions (HVS)" />
+                                      <Text content={LearningCourseDetails}/>
                   </Flex>
                   <Flex className="learningCourseDescription">
                     <Text
-                      content="The essential guide to High Velocity Solutions (HVS).
-                                        TABLE OF CONTENTS
-                                        Section 1 - Introduction
-	                                        Upskilling Program for SAP Welcome Message
-	                                        Learning Board Introduction
-                                            Section 2:High Velocity Enterprise Delivery (HVED)
-	                                        HVED Overview
-	                                        High Velocity Solutions Overview
-	                                        Digital Roadmaps Overview
-	                                        Solution Blueprints Overview
-	                                        Leveraging HVS with Clients"
+                     content={CourseDescription}
                     />
                   </Flex>
                   <Flex className="learningCourseDurations">
@@ -64,21 +69,21 @@ export const TaskCard: React.FC = () => {
                         className="learningCourseHoursImage"
                         src={imageClock}
                       />
-                      <Text content="8 hours" />
+                                          <Text content={courseDuration} />
                     </div>
                     <div className="learningCourseType">
                       <Image
                         className="learningCourseHoursImage"
                         src={imageMonitor}
                       />
-                      <Text className="trainingType" content="Online" />
+                     <Text className="trainingType" content={courseMode} />
                     </div>
                     <div className="leaningCourseDate">
                       <Image
                         className="learningCourseCalanderImage"
                         src={imageCalander}
                       />
-                      <Text className="trainingType" content="9/12/2021" />
+                                          <Text className="trainingType" content={courseDate} />
                     </div>
                   </Flex>
                 </Flex>

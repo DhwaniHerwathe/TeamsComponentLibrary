@@ -19,19 +19,37 @@ import "./Card.css";
  * Footer: A card can contain a footer slot
  * */
 
-export const LeaveApprovalCard: React.FC = () => {
+export interface ILeaveApprovalCardProps {
+    employeeName?: string,
+    designation?: string,
+    leaveType?: string,
+    fromDate?: string,
+    ToDate?: string,
+    numberOfDays?: string,
+    vacationType?: string,
+}
+export const LeaveApprovalCard: React.FC<ILeaveApprovalCardProps> = ({
+    employeeName,
+    designation,
+    leaveType,
+    fromDate,
+    ToDate,
+    numberOfDays,
+    vacationType,
+    ...props
+}) => {
   const list1 = [
     {
       key: "",
       media: "",
-      header: <Text className="detail-text">Floating</Text>,
+          header: <Text className="detail-text">{vacationType}</Text>,
       headerMedia: "",
       content: <Text className="list-text">Vacation Type</Text>,
     },
     {
       key: "",
       media: "",
-      header: <Text className="detail-text">1</Text>,
+        header: <Text className="detail-text">{numberOfDays}</Text>,
       headerMedia: "",
       content: <Text className="list-text">Number of Days</Text>,
     },
@@ -41,14 +59,14 @@ export const LeaveApprovalCard: React.FC = () => {
     {
       key: "",
       media: "",
-      header: <Text className="detail-text">5-Feb-2021</Text>,
+          header: <Text className="detail-text">{fromDate}</Text>,
       headerMedia: "",
       content: <Text className="list-text">From</Text>,
     },
     {
       key: "",
       media: "",
-      header: <Text className="detail-text">Vacation</Text>,
+        header: <Text className="detail-text">{leaveType}</Text>,
       headerMedia: "",
       content: <Text className="list-text">Reason</Text>,
     },
@@ -57,7 +75,7 @@ export const LeaveApprovalCard: React.FC = () => {
     {
       key: "",
       media: "",
-      header: <Text className="detail-text">5-Feb-2021</Text>,
+      header: <Text className="detail-text">{ToDate}</Text>,
       headerMedia: "",
       content: <Text className="list-text">To</Text>,
     },
@@ -82,15 +100,15 @@ export const LeaveApprovalCard: React.FC = () => {
               </Card.Header>
               <Card.Body>
                 <Flex className="taskNameDetails" gap="gap.small">
-                  <Avatar name="Mike Ross" />
+                  <Avatar name={employeeName} />
                   <Flex column>
                     <Text
-                      color="grey"
-                      size="medium"
-                      weight="semibold"
-                      content="Mike Ross"
+                    color="grey"
+                    size="medium"
+                    weight="semibold"
+                    content={employeeName}
                     />
-                    <Text color="lightgrey" size="small" content="Test Job" />
+                   <Text color="lightgrey" size="small" content={designation} />
                   </Flex>
                 </Flex>
                 <Flex className="taskCardBody" vAlign="start">
@@ -110,8 +128,8 @@ export const LeaveApprovalCard: React.FC = () => {
                   <Box />
                   <Flex gap="gap.small" vAlign="end">
                     <Button
-                      className="editButton"
-                      content="Take Action"
+                                          className="editButton"
+                                          content="Approve"
                       primary
                     />
                   </Flex>
