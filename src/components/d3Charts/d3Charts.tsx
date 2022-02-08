@@ -19,15 +19,17 @@ export const PieChart : React.FC<iPieChartProps> = ({
     headerName,
     ...props
   }) => {
-    const pieChart = useRef()
+    const pieChartSmall = useRef()
+    const pieChartLarge = useRef()
 	useEffect(()=>{
+        if (size === "large"){
 		// Get positions for each data object
 		const piedata = d3.pie().value(d => d.percentage)(data)
 		// Define arcs for graphing 
 		const arc = d3.arc().innerRadius(0).outerRadius(100)
 		const colors = d3.scaleOrdinal(['#6364a7','#c4314b','#d9dbd9','#1ac0c6','#dee0e6'])
 		// Define the size and position of svg
-		const svg = d3.select(pieChart.current)
+		const svg = d3.select(pieChartLarge.current)
 						.attr('width', 250)
 						.attr('height', 250)
 						// .style('background-color','yellow')
@@ -35,22 +37,18 @@ export const PieChart : React.FC<iPieChartProps> = ({
 							.attr('transform','translate(100,100)')
 
 		// Add tooltip
-		const tooldiv = d3.select('#chartArea')
+		const tooldiv = d3.select('#chartAreaLarge')
         .append('div')
         .style('visibility','hidden')
         .style('position','absolute')
         .style('background-color','white')
-        
         //Initialize legend
 		const legendItemSize = 12;
         const legendSpacing = 4;
 		const xOffset = 20;
 		const yOffset = 20;
-        const n = data.length;
-        const itemWidth =80;
-        const itemHeight = 18;
         const legend = d3
-			.select('#chartArea')
+			.select('#chartAreaLarge')
 			.append('svg')
             .selectAll('.legendItem')
             .data(data);
@@ -64,70 +62,105 @@ export const PieChart : React.FC<iPieChartProps> = ({
         .style('fill', d => d.color)
         .attr('transform',
             (d, i) => {
-                if (size === "large"){
-                    var x = xOffset;
-                    var y = yOffset + (legendItemSize + legendSpacing) * i;
-                    return `translate(${x}, ${y})`;
-                }
-                else if (size === "small"){
-                    return "translate(" + i%n * itemWidth + "," +  Math.floor(i/n) * itemHeight  + ")" ;
-                }
+                var x = xOffset;
+                var y = yOffset + (legendItemSize + legendSpacing) * i;
+                return `translate(${x}, ${y})`;
             });
-        //.attr("transform", function(d,i) { return "translate(" + i%n * itemWidth + "," +  "230" + ")" ;})
-        
+    
         //Create legend labels
         legend
             .enter()
             .append('text')
             .attr('x', xOffset + legendItemSize + 5)
             .attr('y', (d, i) => yOffset + (legendItemSize + legendSpacing) * i + 12)
-            .text(d => d.item +  ' ' + d.percentage + '%');	
-        // else if(size === "small"){
-        //     //Creating legends for short card
-        //     const n = data.length;
-        //     const itemWidth =80;
-        //     //const itemHeight = 18;    
-        //     const horizontalLegend = d3.select("svg");
-        //     const legend = horizontalLegend.selectAll(".legend")
-        //         .data(data)
-        //         .enter()
-        //         .append("g")
-        //         .attr("transform", function(d,i) { return "translate(" + i%n * itemWidth + "," +  "230" + ")" ;})
-        //         .attr("class","legend");
-        //     const rects = legend.append('rect')
-        //         .attr("width",15)
-        //         .attr("height",15)
-        //         .attr("fill", function(d,i) { return colors(i); });
-        //     const text = legend.append('text')
-        //         .attr("x", 15)
-        //         .attr("y",12)
-        //         .text(d => " " + d.item);
-        // }
-		// Draw pies
+            .text(d => d.item +  ' ' + d.percentage);
+            // Draw pies
+            svg.append('g')
+            .selectAll('path')
+            .data(piedata)
+            .join('path')
+            .attr('d', arc)
+            .attr('fill',(d,i)=>colors(i))
+            .attr('stroke', 'white')
+            .on('mouseover', (e,d)=>{
+                console.log(e)
+                console.log(d)
+
+                tooldiv.style('visibility','visible')
+                        // eslint-disable-next-line no-useless-concat
+                        .text(`${d.data.item}:` +  ` `+ `${d.data.percentage}` + `%`)
+            })
+            .on('mousemove', (e,d)=>{
+                tooldiv.style('top', (e.pageY-50) + 'px')
+                        .style('left', (e.pageX-50) + 'px')
+            })
+            .on('mouseout',()=>{
+                tooldiv.style('visibility','hidden')
+            })	
+        }
+        else if (size ==="small"){
+            const piedata = d3.pie().value(d => d.percentage)(data)
+            // Define arcs for graphing 
+            const arc = d3.arc().innerRadius(0).outerRadius(100)
+            const colors = d3.scaleOrdinal(['#6364a7','#c4314b','#d9dbd9','#1ac0c6','#dee0e6'])
+            // Define the size and position of svg
+            const svg = d3.select(pieChartSmall.current)
+                            .attr('width', 250)
+                            .attr('height', 250)
+                            // .style('background-color','yellow')
+                            .append('g')
+                                .attr('transform','translate(100,100)')
+
+            // Add tooltip
+            const tooldiv = d3.select('#chartArea')
+            .append('div')
+            .style('visibility','hidden')
+            .style('position','absolute')
+            .style('background-color','white')
+            //Creating legends for short card
+            const n = data.length;
+            const itemWidth =80;
+            //const itemHeight = 18;    
+            const horizontalLegend = d3.select("svg");
+            const legend = horizontalLegend.selectAll(".smallLegend")
+                .data(data)
+                .enter()
+                .append("g")
+                .attr("transform", function(d,i) { return "translate(" + i%n * itemWidth + "," +  "230" + ")" ;})
+                .attr("class","legend");
+            const rects = legend.append('rect')
+                .attr("width",15)
+                .attr("height",15)
+                .attr("fill", function(d,i) { return colors(i); });
+            const text = legend.append('text')
+                .attr("x", 15)
+                .attr("y",12)
+                .text(d => " " + d.item);
+                // Draw pies
 		svg.append('g')
-			.selectAll('path')
-			.data(piedata)
-			.join('path')
-				.attr('d', arc)
-				.attr('fill',(d,i)=>colors(i))
-				.attr('stroke', 'white')
-				.on('mouseover', (e,d)=>{
-					console.log(e)
-					console.log(d)
+        .selectAll('path')
+        .data(piedata)
+        .join('path')
+            .attr('d', arc)
+            .attr('fill',(d,i)=>colors(i))
+            .attr('stroke', 'white')
+            .on('mouseover', (e,d)=>{
+                console.log(e)
+                console.log(d)
 
-					tooldiv.style('visibility','visible')
-							// eslint-disable-next-line no-useless-concat
-							.text(`${d.data.item}:` +  ` `+ `${d.data.percentage}` + `%`)
-				})
-				.on('mousemove', (e,d)=>{
-					tooldiv.style('top', (e.pageY-50) + 'px')
-							.style('left', (e.pageX-50) + 'px')
-				})
-				.on('mouseout',()=>{
-					tooldiv.style('visibility','hidden')
-				})
-
-	})
+                tooldiv.style('visibility','visible')
+                        // eslint-disable-next-line no-useless-concat
+                        .text(`${d.data.item}:` +  ` `+ `${d.data.percentage}` + `%`)
+            })
+            .on('mousemove', (e,d)=>{
+                tooldiv.style('top', (e.pageY-50) + 'px')
+                        .style('left', (e.pageX-50) + 'px')
+            })
+            .on('mouseout',()=>{
+                tooldiv.style('visibility','hidden')
+            })
+        }
+	},[size])
 
     return (
         <Flex>
@@ -138,7 +171,7 @@ export const PieChart : React.FC<iPieChartProps> = ({
                 </CardHeader>
                 <CardBody>
                     <div id='chartArea'>
-                        <svg ref={pieChart}></svg>
+                        <svg ref={pieChartSmall}></svg>
                     </div>
                 </CardBody>
             </Card>
@@ -148,8 +181,8 @@ export const PieChart : React.FC<iPieChartProps> = ({
                     <Header className="chartType" as="h3" content="Pie Chart"/>
                 </CardHeader>
                 <CardBody>
-                    <div id='chartArea'>
-                        <svg ref={pieChart}></svg>
+                    <div id='chartAreaLarge'>
+                        <svg ref={pieChartLarge}></svg>
                     </div>
                 </CardBody>
             </Card> 
