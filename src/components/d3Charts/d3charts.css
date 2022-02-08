@@ -1,0 +1,27 @@
+.piechartCard{
+    border: 1px solid #d3d3d3;
+    margin: 10px;
+    border-radius: 10px;
+    width: 300px;
+}
+#chartArea{
+    margin: 20px;
+}
+#chartArea svg{
+    margin-left: 20px;
+}
+.chartType{
+    margin-left: 10px;
+}
+/* .piechartCard #chartArea svg:nth-child(2){
+    display: none;
+} */
+.pieChartBigCard{
+    border: 1px solid #d3d3d3;
+    margin: 10px;
+    border-radius: 10px;
+    width: 650px;
+}
+/* .pieChartBigCard #chartArea svg g:nth-child(2), .pieChartBigCard #chartArea svg g:nth-child(3), .pieChartBigCard #chartArea svg g:nth-child(4){
+    display: none;
+} */
