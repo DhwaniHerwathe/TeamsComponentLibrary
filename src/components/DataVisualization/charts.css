@@ -1,0 +1,32 @@
+.piechartCard, .donutChartCard{
+    border: 1px solid #d3d3d3;
+    margin: 10px;
+    border-radius: 10px;
+    width: 296px;
+    position: relative;
+}
+#chartArea{
+    margin: 20px 20px 20px 40px;
+}
+
+.chartType{
+    margin-left: 10px;
+}
+.pieChartBigCard, .donutChartBigCard{
+    border: 1px solid #d3d3d3;
+    margin: 10px;
+    border-radius: 10px;
+    width: 600px;
+    position: relative;
+}
+#chartAreaLarge{
+    margin: 20px;
+}
+#chartAreaLarge svg{
+    margin-left: 20px;
+}
+svg.verticalLegend{
+    position: absolute;
+    top: 25%;
+    width: 190px;
+}

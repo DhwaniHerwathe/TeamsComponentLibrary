@@ -1,11 +1,11 @@
 import * as React from "react";
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
 import { Story, Meta } from "@storybook/react/types-6-0";
-
-import { PieChart, iPieChartProps } from "./d3Charts";
+import { PieChart, iPieChartProps } from "./pieChart";
+import { DonutChart, iDonutChartProps } from "./DonutChart";
 
 export default {
-  title: "Components/d3Charts",
+  title: "Components/DataVisualization",
   component: PieChart,
   argTypes: {
     headerName: {
@@ -18,15 +18,21 @@ export default {
       },
     },
     size: {
-      // name: "size",
-      // type: { name: "string", required: true },
-      // defaultValue: "small",
-      // type: "select",
-      // options: ["small", "large"],
-      // description: "type the size of the card",
-      // table: {
-      //   defaultValue: { summary: "small" },
-      // },
+      control: {
+        type: "select",
+        options: ["small", "large"],
+      },
+    },
+    donutheaderName: {
+      name: "headerName",
+      type: { name: "string", required: true },
+      defaultValue: "Are you Sure Want to perform this action",
+      description: "Providing a name that can be displayed on the header",
+      table: {
+        defaultValue: { summary: "Donut Chart" },
+      },
+    },
+    donutsize: {
       control: {
         type: "select",
         options: ["small", "large"],
@@ -38,9 +44,13 @@ export default {
 const Template: Story<iPieChartProps> = (args) => (
   <PieChart {...args} />
 );
+const Template2: Story<iDonutChartProps> = (args) => (
+ <DonutChart {...args} />
+);
 
-export const Default = Template.bind({});
-Default.args = {
+export const Pie = Template.bind({});
+export const Donut = Template2.bind({});
+Pie.args = {
   headerName: "Pie Chart",
   size: "small",
 };
