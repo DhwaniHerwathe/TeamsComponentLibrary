@@ -6,12 +6,12 @@ import { DonutChart, iDonutChartProps } from "./DonutChart";
 
 export default {
   title: "Components/DataVisualization",
-  component: PieChart,
+  component: PieChart, DonutChart,
   argTypes: {
     headerName: {
       name: "headerName",
       type: { name: "string", required: true },
-      defaultValue: "Are you Sure Want to perform this action",
+      //defaultValue: "Are you Sure Want to perform this action",
       description: "Providing a name that can be displayed on the header",
       table: {
         defaultValue: { summary: "Pie Chart" },
@@ -21,12 +21,13 @@ export default {
       control: {
         type: "select",
         options: ["small", "large"],
+        defaultValue: ["small"]
       },
     },
     donutheaderName: {
       name: "headerName",
       type: { name: "string", required: true },
-      defaultValue: "Are you Sure Want to perform this action",
+      //defaultValue: "Are you Sure Want to perform this action",
       description: "Providing a name that can be displayed on the header",
       table: {
         defaultValue: { summary: "Donut Chart" },
@@ -36,6 +37,7 @@ export default {
       control: {
         type: "select",
         options: ["small", "large"],
+        defaultValue: ["small"]
       },
     },
   },
@@ -54,3 +56,7 @@ Pie.args = {
   headerName: "Pie Chart",
   size: "small",
 };
+Donut.args ={
+  donutheaderName: "Donut Chart",
+  size: "small",
+}

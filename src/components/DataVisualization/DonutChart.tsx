@@ -96,7 +96,7 @@ export const DonutChart : React.FC<iDonutChartProps> = ({
                 .data(data)
                 .enter()
                 .append("g")
-                .attr("transform", function(d,i) { return `{translate( ${i%n * itemWidth  }, ${230} )}`})
+                .attr("transform", function(d,i) { return "translate(" + i%n * itemWidth + "," +  "230" + ")" ;})
                 .attr("class","legend");
             const rects = legend.append('rect')
                 .attr("width",15)
