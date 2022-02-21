@@ -40,7 +40,9 @@ export const DonutChart : React.FC<iDonutChartProps> = ({
         .append('div')
         .style('visibility','hidden')
         .style('position','absolute')
-        .style('background-color','white')
+        .style('background-color','black')
+        .style('color','white')
+        .style('padding','0 5px')
         if (donutsize === "large"){
             console.log( "Large Card")
             d3.selectAll("svg g.legend").remove(); 

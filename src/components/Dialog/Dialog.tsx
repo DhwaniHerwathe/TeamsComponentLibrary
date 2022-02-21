@@ -21,7 +21,7 @@ export const DialogScreen: React.FC<IDialogScreenProps> = ({
   ...props
 }) => {
   return (
-    <Provider theme={teamsTheme}>
+    <Provider theme={teamsTheme} >
       <Dialog
         cancelButton="Cancel"
         confirmButton="Confirm"

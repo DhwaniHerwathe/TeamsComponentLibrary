@@ -58,5 +58,5 @@ Pie.args = {
 };
 Donut.args ={
   donutheaderName: "Donut Chart",
-  size: "small",
+  donutsize: "small",
 }

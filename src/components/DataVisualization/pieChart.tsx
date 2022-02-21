@@ -40,7 +40,9 @@ export const PieChart : React.FC<iPieChartProps> = ({
         .append('div')
         .style('visibility','hidden')
         .style('position','absolute')
-        .style('background-color','white')
+        .style('background-color','black')
+        .style('color','white')
+        .style('padding','0 5px')
         if (size === "large"){
             console.log( "Large Card")
             d3.selectAll("svg g.legend").remove(); 
