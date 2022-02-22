@@ -6,7 +6,9 @@ import {
   teamsDarkTheme,
   teamsHighContrastTheme,
   ThemeInput,
+  Button
 } from "@fluentui/react-northstar";
+import { CSVLink } from "react-csv";
 
 /**
  * Type checking for Component State
@@ -21,6 +23,8 @@ type CompProps = {
   tableData?: TableValues;
   attributes?: object;
   theme: object;
+  fileName?: string;
+  fileExtension: string;
 };
 
 /**
@@ -64,9 +68,14 @@ export default class TableComponent extends React.Component<
       }
       return theme;
     };
-
+    console.log(this.props.tableData.values);
     return (
       <Provider theme={updateTheme(this.props.theme)}>
+        <Button>
+          <CSVLink data={this.props.tableData.values} style={{ textDecoration: "none", color: 'black', fontWeight: "bold" }} headers={this.props.tableData.headers.items} filename={this.props.fileName + this.props.fileExtension}>
+            Export XLS
+          </CSVLink>
+        </Button>
         <Table
           variables={this.props.attributes}
           color="#979593"

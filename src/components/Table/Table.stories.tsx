@@ -16,6 +16,15 @@ export default {
         options: ["light", "dark", "contrast"],
       },
     },
+    fileExtension: {
+      control: {
+        type: "select",
+        options: [".csv", ".xls"],
+      },
+    },
+    fileName: {
+      controls: "String"
+    },
     attributes: {
       control: {
         type: "object",
@@ -111,8 +120,10 @@ Advance.args = {
 Default.args = {
   theme: "light",
   attributes: { cellContentOverflow: "none" },
+  fileExtension: ".csv",
+  fileName: "attribute",
   tableData: {
-    headers: { items: ["Id", "Name", "Age", "Picture"] },
+    headers: { items: ["id", "name", "age", "image"] },
     values: [
       {
         id: "1",
@@ -130,7 +141,7 @@ Default.args = {
         id: "3",
         name: "Cooper",
         age: "28",
-        image: null,
+        image: "None",
       },
     ],
   },
