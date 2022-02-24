@@ -1,10 +1,11 @@
 import React from 'react';
-import { useTable, usePagination } from 'react-table';
+import { useTable, usePagination, useFilters, useGlobalFilter, useAsyncDebounce } from 'react-table';
 
 import "./Table.css";
 
 export interface TableProps {
 }
+
 
 
 const EditableCell = ({
@@ -38,15 +39,52 @@ const EditableCell = ({
     Cell: EditableCell
   };
 
+
+//global filter
+
+const  GlobalFilter = ({preGlobalFilteredRows, globalFilter, setGlobalFilter }) => {
+  console.log("abc" + preGlobalFilteredRows);
+  const count = preGlobalFilteredRows.length
+  const [value, setValue] = React.useState(globalFilter)
+  const onChange = useAsyncDebounce(value => {
+    setGlobalFilter(value || undefined)
+  }, 200)
+
+  return (
+    
+    <span>
+      Search: {''}
+      <input
+        value={value || ""}
+        onChange={e => {
+          setValue(e.target.value);
+          onChange(e.target.value);
+        }}
+        // placeholder={`${count} records...`}
+        style={{
+          fontSize: '1.1rem',
+          border: '0',
+        }}
+      />
+    </span>
+    
+  )
+}
+
+
 // Table component
+
 const Table = ({ columns, data, updateMyData, skipPageReset}) => {
   // Use the state and functions returned from useTable to build your UI
   const {
     getTableProps,
     getTableBodyProps,
     headerGroups,
+    rows,
+    state,
     prepareRow,
     page,
+    visibleColumns,
     canPreviousPage,
     canNextPage,
     pageOptions,
@@ -55,16 +93,19 @@ const Table = ({ columns, data, updateMyData, skipPageReset}) => {
     nextPage,
     previousPage,
     setPageSize,
+    preGlobalFilteredRows,
+    setGlobalFilter,
     state: { pageIndex, pageSize }
   } = useTable({
     columns,
     data,
     defaultColumn,
     autoResetPage: !skipPageReset,
-    updateMyData
+    updateMyData,
   },
-//   useSortBy,
-  usePagination
+  useFilters, 
+  useGlobalFilter,
+  usePagination,
   )
 
   // Render the UI for your table
@@ -75,10 +116,24 @@ const Table = ({ columns, data, updateMyData, skipPageReset}) => {
         {headerGroups.map(headerGroup => (
           <tr {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map(column => (
-              <th {...column.getHeaderProps()}>{column.render('Header')}</th>
+              <th {...column.getHeaderProps()}>{column.render('Header')}
+              </th>
             ))}
           </tr>
         ))}
+         <tr>
+            <th
+              style={{
+                textAlign: 'left',
+              }}
+            >
+              <GlobalFilter
+                preGlobalFilteredRows={preGlobalFilteredRows}
+                globalFilter={state.globalFilter}
+                setGlobalFilter={setGlobalFilter}
+              />
+            </th>
+          </tr>
       </thead>
       <tbody {...getTableBodyProps()}>
         {page.map((row, i) => {
@@ -148,112 +203,112 @@ export const TableStruct : React.FC<TableProps> = () => {
 
     //dataValue via props
     const dataValue = [{
-        "age": 1,
+        "eid": 1,
+        "firstName": "rohit",
+        "lastName": "ram",
+        "progress": 80,
+        "status": "done",
+        "subRows": undefined,
+        "visits": 35
+      },
+      {
+        "eid": 2,
+        "firstName": "kirti",
+        "lastName": "kumar",
+        "progress": 80,
+        "status": "done",
+        "subRows": undefined,
+        "visits": 36
+      },
+      {
+        "eid": 3,
+        "firstName": "trip",
+        "lastName": "kumar",
+        "progress": 80,
+        "status": "done",
+        "subRows": undefined,
+        "visits": 37
+      },
+      {
+        "eid": 4,
         "firstName": "apple",
-        "lastName": "orange",
+        "lastName": "jam",
         "progress": 80,
-        "status": "inCart",
+        "status": "done",
         "subRows": undefined,
-        "visits": 35
+        "visits": 38
       },
       {
-        "age": 2,
+        "eid": 5,
         "firstName": "kiwi",
         "lastName": "mango",
         "progress": 80,
-        "status": "inCart",
+        "status": "done",
         "subRows": undefined,
-        "visits": 35
+        "visits": 39
       },
       {
-        "age": 3,
+        "eid": 6,
         "firstName": "kiwi",
         "lastName": "mango",
         "progress": 80,
-        "status": "inCart",
+        "status": "done",
         "subRows": undefined,
-        "visits": 35
+        "visits": 40
       },
       {
-        "age": 4,
+        "eid": 7,
         "firstName": "kiwi",
         "lastName": "mango",
         "progress": 80,
-        "status": "inCart",
+        "status": "done",
         "subRows": undefined,
-        "visits": 35
+        "visits": 41
       },
       {
-        "age": 5,
+        "eid": 8,
         "firstName": "kiwi",
         "lastName": "mango",
         "progress": 80,
-        "status": "inCart",
+        "status": "na",
         "subRows": undefined,
-        "visits": 35
+        "visits": 42
       },
       {
-        "age": 6,
+        "eid": 9,
         "firstName": "kiwi",
         "lastName": "mango",
         "progress": 80,
-        "status": "inCart",
+        "status": "na",
         "subRows": undefined,
-        "visits": 35
+        "visits": 43
       },
       {
-        "age": 7,
+        "eid": 10,
         "firstName": "kiwi",
         "lastName": "mango",
         "progress": 80,
-        "status": "inCart",
+        "status": "na",
         "subRows": undefined,
-        "visits": 35
+        "visits": 44
       },
       {
-        "age": 8,
+        "eid": 11,
         "firstName": "kiwi",
         "lastName": "mango",
         "progress": 80,
-        "status": "inCart",
+        "status": "na",
         "subRows": undefined,
         "visits": 35
       },
       {
-        "age": 9,
+        "eid": 12,
         "firstName": "kiwi",
         "lastName": "mango",
         "progress": 80,
-        "status": "inCart",
+        "status": "done",
         "subRows": undefined,
-        "visits": 35
-      },
-      {
-        "age": 10,
-        "firstName": "kiwi",
-        "lastName": "mango",
-        "progress": 80,
-        "status": "inCart",
-        "subRows": undefined,
-        "visits": 35
-      },
-      {
-        "age": 11,
-        "firstName": "potato",
-        "lastName": "mango",
-        "progress": 80,
-        "status": "inCart",
-        "subRows": undefined,
-        "visits": 35
-      },
-      {
-        "age": 12,
-        "firstName": "tomato",
-        "lastName": "mango",
-        "progress": 80,
-        "status": "inCart",
-        "subRows": undefined,
-        "visits": 35
+        "visits": 45
       }
       ];
       const [data, setData] = React.useState(dataValue);
@@ -271,6 +326,7 @@ export const TableStruct : React.FC<TableProps> = () => {
           {
             Header: 'Last Name',
             accessor: 'lastName',
+            filter: 'fuzzyText',
           }
         ]
       },
@@ -278,8 +334,8 @@ export const TableStruct : React.FC<TableProps> = () => {
         Header: 'Info',
         columns: [
           {
-            Header: 'Age',
-            accessor: 'age',
+            Header: 'Employee Id',
+            accessor: 'eid',
           },
           {
             Header: 'Visits',
@@ -290,7 +346,7 @@ export const TableStruct : React.FC<TableProps> = () => {
             accessor: 'status',
           },
           {
-            Header: 'Quantity',
+            Header: 'Current',
             accessor: 'progress',
           },
 
