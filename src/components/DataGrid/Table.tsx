@@ -48,8 +48,9 @@ const GlobalFilter = ({ preGlobalFilteredRows, globalFilter, setGlobalFilter }) 
   return (
 
     <span>
-      Search: {''}
+      {/* Search: {''} */}
       <Input
+        placeholder="Search..."
         value={value || ""}
         onChange={e => {
           setValue(e.target.value);
@@ -108,16 +109,16 @@ const Table = ({ columns, data, updateMyData, skipPageReset }) => {
     <>
       <table  {...getTableProps()}>
         <thead>
-        {/* <tr className='tableSearch'> */}
-            <div
+          {/* <tr className='tableSearch'> */}
+          <div
             className='tableSearch'
-            >
-              <GlobalFilter
-                preGlobalFilteredRows={preGlobalFilteredRows}
-                globalFilter={state.globalFilter}
-                setGlobalFilter={setGlobalFilter}
-              />
-            </div>
+          >
+            <GlobalFilter
+              preGlobalFilteredRows={preGlobalFilteredRows}
+              globalFilter={state.globalFilter}
+              setGlobalFilter={setGlobalFilter}
+            />
+          </div>
           {/* </tr> */}
           {headerGroups.map(headerGroup => (
             <tr {...headerGroup.getHeaderGroupProps()}>
@@ -318,62 +319,52 @@ export const TableStruct: React.FC<TableProps> = () => {
   const columns = React.useMemo(
     () => [
       {
-        Header: 'Name',
-        columns: [
-          {
-            Header: 'First Name',
-            accessor: 'firstName',
-          },
-          {
-            Header: 'Last Name',
-            accessor: 'lastName',
-            filter: 'fuzzyText',
-          }
-        ]
+        Header: 'First Name',
+        accessor: 'firstName',
       },
       {
-        Header: 'Info',
-        columns: [
-          {
-            Header: 'Employee Id',
-            accessor: 'eid',
-          },
-          {
-            Header: 'Visits',
-            accessor: 'visits',
-          },
-          {
-            Header: 'Status',
-            accessor: 'status',
-          },
-          {
-            Header: 'Current',
-            accessor: 'progress',
-          },
+        Header: 'Last Name',
+        accessor: 'lastName',
+        filter: 'fuzzyText',
+      },
+      {
+        Header: 'Employee Id',
+        accessor: 'eid',
+      },
+      {
+        Header: 'Visits',
+        accessor: 'visits',
+      },
+      {
+        Header: 'Status',
+        accessor: 'status',
+      },
+      {
+        Header: 'Current',
+        accessor: 'progress',
+      },
 
-          // Delete Functionality
-          {
-            Header: 'Delete',
-            id: 'delete',
-            accessor: (str) => 'delete',
+      // Delete Functionality
+      {
+        Header: 'Delete',
+        id: 'delete',
+        accessor: (str) => 'delete',
 
-            Cell: (tableProps) => (
-              <Button
-                onClick={() => {
-                  // ES6 Syntax use the rvalue if your data is an array.
-                  const dataCopy = [...data];
-                  // It should not matter what you name tableProps. It made the most sense to me.
-                  dataCopy.splice(tableProps.row.index, 1);
-                  setData(dataCopy);
-                }}
-                size="small"
-                >
-                Delete
-              </Button>
-            ),
-          },
-        ]
-      }
+        Cell: (tableProps) => (
+          <Button
+            onClick={() => {
+              // ES6 Syntax use the rvalue if your data is an array.
+              const dataCopy = [...data];
+              // It should not matter what you name tableProps. It made the most sense to me.
+              dataCopy.splice(tableProps.row.index, 1);
+              setData(dataCopy);
+            }}
+            size="small"
+          >
+            Delete
+          </Button>
+        ),
+      },
     ],
     [data]
   );

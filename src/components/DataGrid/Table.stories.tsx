@@ -5,7 +5,7 @@ import { Story, Meta } from '@storybook/react/types-6-0';
 import { TableStruct, TableProps } from './Table';
 
 export default {
-  title: 'Components/AdvanceTable',
+  title: 'Components/DataGrid',
   component: TableStruct,  
 } as Meta;
 
