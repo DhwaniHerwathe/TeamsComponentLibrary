@@ -1,28 +1,40 @@
 table {
-    border-spacing: 0;
-    border: 1px solid black;
+  border-spacing: 0;
+  /* border: 1px solid black; */
 }
 
 tr {
 
-  }
+}
 
-  th,
-  td {
-    margin: 0;
-    padding: 0.5rem;
-    border-bottom: 1px solid black;
-    border-right: 1px solid black;
+th {
+font-family: "Segoe UI", system-ui, "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+font-size: 0.75rem;
+}
+
+th,
+td {
+  margin: 0;
+  padding: 0.5rem;
+  border-bottom: 0.5px solid #a9a9a9;
+  /* border-right: 1px solid black; */
 }
 
 .pagination {
-    padding: 0.5rem;
-  }
+  padding: 0.5rem;
+}
 
-  input {
-    font-size: 0.8rem;
-    padding: 0;
-    margin: 0;
-    border: 0;
-  }
+input {
+  font-size: 0.9rem;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  /* text-align: center; */
+  font-family: "Segoe UI", system-ui, "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+}
 
+.tableSearch {
+  text-align: left;
+  padding-top: 20px;
+  font-family: "Segoe UI", system-ui, "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+}

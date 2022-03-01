@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTable, usePagination, useFilters, useGlobalFilter, useAsyncDebounce, useSortBy } from 'react-table';
+import { Provider, Button, teamsTheme, Input } from "@fluentui/react-northstar";
 
 import "./Table.css";
 
@@ -48,7 +49,7 @@ const GlobalFilter = ({ preGlobalFilteredRows, globalFilter, setGlobalFilter }) 
 
     <span>
       Search: {''}
-      <input
+      <Input
         value={value || ""}
         onChange={e => {
           setValue(e.target.value);
@@ -107,6 +108,17 @@ const Table = ({ columns, data, updateMyData, skipPageReset }) => {
     <>
       <table  {...getTableProps()}>
         <thead>
+        {/* <tr className='tableSearch'> */}
+            <div
+            className='tableSearch'
+            >
+              <GlobalFilter
+                preGlobalFilteredRows={preGlobalFilteredRows}
+                globalFilter={state.globalFilter}
+                setGlobalFilter={setGlobalFilter}
+              />
+            </div>
+          {/* </tr> */}
           {headerGroups.map(headerGroup => (
             <tr {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map(column => (
@@ -122,19 +134,6 @@ const Table = ({ columns, data, updateMyData, skipPageReset }) => {
               ))}
             </tr>
           ))}
-          <tr>
-            <th
-              style={{
-                textAlign: 'left',
-              }}
-            >
-              <GlobalFilter
-                preGlobalFilteredRows={preGlobalFilteredRows}
-                globalFilter={state.globalFilter}
-                setGlobalFilter={setGlobalFilter}
-              />
-            </th>
-          </tr>
         </thead>
         <tbody {...getTableBodyProps()}>
           {page.map((row, i) => {
@@ -359,16 +358,18 @@ export const TableStruct: React.FC<TableProps> = () => {
             accessor: (str) => 'delete',
 
             Cell: (tableProps) => (
-              <span style={{ cursor: 'pointer', color: 'blue', textDecoration: 'underline' }}
+              <Button
                 onClick={() => {
                   // ES6 Syntax use the rvalue if your data is an array.
                   const dataCopy = [...data];
                   // It should not matter what you name tableProps. It made the most sense to me.
                   dataCopy.splice(tableProps.row.index, 1);
                   setData(dataCopy);
-                }}>
+                }}
+                size="small"
+                >
                 Delete
-              </span>
+              </Button>
             ),
           },
         ]
@@ -408,7 +409,7 @@ export const TableStruct: React.FC<TableProps> = () => {
   const resetData = () => setData(originalData);
 
   return (
-    <div>
+    <Provider theme={teamsTheme}>
       <button onClick={resetData}>Reset Data</button>
       <Table
         columns={columns}
@@ -417,7 +418,7 @@ export const TableStruct: React.FC<TableProps> = () => {
         skipPageReset={skipPageReset}
       />
 
-    </div>
+    </Provider>
   )
 }
 
