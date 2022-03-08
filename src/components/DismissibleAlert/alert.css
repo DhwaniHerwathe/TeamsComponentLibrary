@@ -1,0 +1,24 @@
+.dismissibleAlert {
+    position: relative;
+    border: 1px solid #f50b0b;
+    padding: 10px;
+}
+.dismissibleAlert .alertBody {
+    z-index: -1;
+    color: #f50b0b;
+  }
+.alertClose{
+    position: absolute;
+    right:0;
+    cursor: pointer;
+}
+.alertClose svg{
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    right: 10px;
+    top: -16px;
+}
+.alertClose svg path{
+    fill: #f50b0b;
+}
